@@ -53,17 +53,26 @@
         <div class="main-content">
 
             <div class="page-header">
+                <h2>Customers</h2>
                 <%
                     String success = request.getParameter("success");
                     if ("1".equals(success)) {
                 %>
                 <div class="alert alert-success alert-dismissible fade show" role="alert">
-                    Customer added successfully!
-                    <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+                    <strong> Customer added successfully.!</strong>
+                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                </div>
+                <%
+                } else if ("0".equals(success)) {
+                %>
+                <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                    <strong>Failed to add customer. Please try again.</strong> 
+                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
                 </div>
                 <% } %>
 
-                <h2>Customers</h2>
+
+
                 <button class="btn-add" data-bs-toggle="modal" data-bs-target="#addCustomerModal">+ Add Customer</button>
             </div>
 
