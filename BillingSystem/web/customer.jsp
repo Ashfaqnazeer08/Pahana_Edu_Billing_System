@@ -1,11 +1,11 @@
-<%@ page session="true" %>
-<%@ page import="java.sql.*, java.util.*" %>
-<%
-    if (session.getAttribute("username") == null) {
+<%@ page session="true" %> 
+<%@ page import="java.sql.*"%>
+<%@ page import="java.util.*"%>
+
+<% if (session.getAttribute("username") == null) {
         response.sendRedirect("login.jsp");
     }
 
-    // Fetch customers from DB
     Connection conn = null;
     PreparedStatement stmt = null;
     ResultSet rs = null;
@@ -18,6 +18,7 @@
         rs = stmt.executeQuery();
         while (rs.next()) {
             Map<String, String> customer = new HashMap<>();
+            customer.put("id", rs.getString("id"));
             customer.put("name", rs.getString("name"));
             customer.put("email", rs.getString("email"));
             customer.put("phone", rs.getString("phone"));
@@ -31,31 +32,23 @@
             conn.close();
         }
     }
+
 %>
 
-<!DOCTYPE html>
-<html>
+<!DOCTYPE html><html>
     <head>
         <title>Customer Management</title>
         <link rel="stylesheet" href="css/style.css">
-
-        <!-- FontAwesome & Bootstrap -->
         <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet">
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
-
         <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
     </head>
     <body>
-        <%-- Sidebar --%>
-        <jsp:include page="sidebar.jsp" />
-
-        <div class="main-content">
-
+        <jsp:include page="sidebar.jsp" /><div class="main-content">
             <div class="page-header">
                 <h2>Customers</h2>
-                <%
-                    String success = request.getParameter("success");
+                <%                String success = request.getParameter("success");
                     if ("1".equals(success)) {
                 %>
                 <div class="alert alert-success alert-dismissible fade show" role="alert">
@@ -71,15 +64,11 @@
                 </div>
                 <% } %>
 
-
-
                 <button class="btn-add" data-bs-toggle="modal" data-bs-target="#addCustomerModal">+ Add Customer</button>
             </div>
 
-            <%-- Success/Error message placeholder --%>
             <div class="message" id="messageBox"></div>
 
-            <%-- Table --%>
             <table class="styled-table">
                 <thead>
                     <tr>
@@ -94,7 +83,7 @@
                         <td><%= c.get("phone")%></td>
                         <td><%= c.get("address")%></td>
                         <td>
-                            <a href="EditCustomerServlet?id=<%= c.get("id")%>" class="text-warning me-2">
+                            <a href="#" class="text-warning me-2" onclick="toggleEdit('<%= c.get("id")%>')">
                                 <i class="fas fa-edit"></i>
                             </a>
                             <a href="DeleteCustomerServlet?id=<%= c.get("id")%>" class="text-danger" onclick="return confirm('Are you sure you want to delete this customer?')">
@@ -102,12 +91,27 @@
                             </a>
                         </td>
                     </tr>
+                    <tr id="editRow-<%= c.get("id")%>" style="display: none;">
+                        <td colspan="5">
+                            <form action="EditCustomerServlet" method="post" class="edit-form">
+                                <input type="hidden" name="id" value="<%= c.get("id")%>" />
+                                <div class="row g-2">
+                                    <div class="col-md-3"><input type="text" name="name" value="<%= c.get("name")%>" required class="form-control" /></div>
+                                    <div class="col-md-3"><input type="email" name="email" value="<%= c.get("email")%>" required class="form-control" /></div>
+                                    <div class="col-md-2"><input type="text" name="phone" value="<%= c.get("phone")%>" maxlength="10" required class="form-control" /></div>
+                                    <div class="col-md-3"><input type="text" name="address" value="<%= c.get("address")%>" required class="form-control" /></div>
+                                    <div class="col-md-1">
+                                        <button type="submit" class="btn btn-success btn-sm">Update</button>
+                                    </div>
+                                </div>
+                            </form>
+                        </td>
+                    </tr>
                     <% }%>
                 </tbody>
             </table>
         </div>
 
-        <!-- Add Customer Modal -->
         <div class="modal fade" id="addCustomerModal" tabindex="-1" aria-labelledby="addCustomerModalLabel" aria-hidden="true">
             <div class="modal-dialog">
                 <div class="modal-content">
@@ -131,6 +135,28 @@
             </div>
         </div>
 
-        <script src="js/script.js"></script>
+        <script>
+            function toggleEdit(id) {
+                const row = document.getElementById('editRow-' + id);
+                row.style.display = row.style.display === 'none' ? '' : 'none';
+            }
+
+            function validateCustomerForm() {
+                const phone = document.querySelector('input[name="phone"]').value;
+                const email = document.querySelector('input[name="email"]').value;
+                const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+                if (!/^[0-9]{10}$/.test(phone)) {
+                    alert("Phone number must be 10 digits.");
+                    return false;
+                }
+                if (!emailPattern.test(email)) {
+                    alert("Invalid email address.");
+                    return false;
+                }
+                return true;
+            }
+        </script>
     </body>
+
 </html>
