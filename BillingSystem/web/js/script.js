@@ -60,3 +60,35 @@ function showMessage(msg, type) {
     setTimeout(() => box.style.display = "none", 4000);
 }
 
+// Show auto-dismiss alerts based on query parameter
+$(document).ready(function () {
+    const params = new URLSearchParams(window.location.search);
+    const success = params.get("success");
+
+    let message = "";
+    let type = "";
+    if (success === "2") {
+        message = "Customer updated successfully!";
+        type = "success";
+    } else if (success === "3") {
+        message = "Customer deleted successfully!";
+        type = "success";
+    } else if (success === "0") {
+        message = "An error occurred. Please try again.";
+        type = "danger";
+    }
+
+    if (message !== "") {
+        const alertBox = `<div class="alert alert-${type} alert-dismissible fade show" role="alert">
+                            <strong>${message}</strong>
+                            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                          </div>`;
+        $("#messageBox").html(alertBox);
+
+        setTimeout(() => {
+            $(".alert").alert('close');
+        }, 3000);
+    }
+});
+
+
