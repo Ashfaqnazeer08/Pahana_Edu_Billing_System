@@ -90,12 +90,34 @@
                 margin-top: 10px;
             }
 
-            
+            .message.success {
+                background-color: #d4edda;
+                color: #155724;
+                border-left: 5px solid #28a745;
+                padding: 12px 20px;
+                border-radius: 6px;
+                margin-bottom: 20px;
+                font-weight: 500;
+                animation: fadeIn 0.5s ease-in-out;
+            }
+
+
+
         </style>
     </head>
     <body>
 
         <div class="left">
+            <%
+                String logoutMsg = request.getParameter("logout");
+                if ("1".equals(logoutMsg)) {
+            %>
+            <div class="message success">You have successfully logged out!</div>
+            <%
+                }
+            %>
+
+
             <h1>Welcome!!</h1>
             <p>Login to access your personalized dashboard and manage your projects with ease.<br> Stay productive, organized, and connected.</p>
 

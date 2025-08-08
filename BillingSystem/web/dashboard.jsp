@@ -16,26 +16,7 @@
 
     </head>
     <body>
-        <div class="sidebar">
-            <div class="logo">
-                <img src="images/logo.jpg" alt="Logo">
-            </div>
-            <ul class="menu">
-                <li><a href="dashboard.jsp"><i class="fas fa-home"></i> Dashboard</a></li>
-                <li>
-                    <a href="customer.jsp"><i class="fas fa-user"></i> Customers </a>
-                </li>
-                <li class="has-submenu">
-                    <a href="#"><i class="fas fa-box"></i> Items <i class="fas fa-chevron-down toggle-icon"></i></a>
-                    <ul class="submenu">
-                        <li><a href="#">Add Item</a></li>
-                        <li><a href="#">View Items</a></li>
-                    </ul>
-                </li>
-                <li><a href="#"><i class="fas fa-file-invoice"></i> Billing</a></li>
-                <li><a href="LogoutServlet"><i class="fas fa-sign-out-alt"></i> Logout</a></li>
-            </ul>
-        </div>
+        <jsp:include page="sidebar.jsp" />
 
         <div class="main-content">
             <h1>Welcome, <%= username%>!</h1>
