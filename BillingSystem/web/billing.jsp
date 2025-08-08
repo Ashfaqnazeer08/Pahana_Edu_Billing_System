@@ -21,7 +21,7 @@
                 overflow-y: auto;
                 max-height: calc(100vh - 60px);
             }
-            .left-panel { flex: 1.3; }
+            .left-panel { flex: 1.7; }
             .right-panel { flex: 2; }
 
             .category-title {
