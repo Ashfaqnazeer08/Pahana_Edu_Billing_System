@@ -29,12 +29,8 @@
                 <li>
                     <a href="customer.jsp"><i class="fas fa-user"></i> Customers </a>
                 </li>
-                <li class="has-submenu">
-                    <a href="#"><i class="fas fa-box"></i> Items <i class="fas fa-chevron-down toggle-icon"></i></a>
-                    <ul class="submenu">
-                        <li><a href="#">Add Item</a></li>
-                        <li><a href="#">View Items</a></li>
-                    </ul>
+                <li>
+                    <a href="items.jsp"><i class="fas fa-box"></i> Items </a>
                 </li>
                 <li><a href="#"><i class="fas fa-file-invoice"></i> Billing</a></li>
                 <li><a href="LogoutServlet"><i class="fas fa-sign-out-alt"></i> Logout</a></li>
