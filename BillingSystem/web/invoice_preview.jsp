@@ -12,7 +12,7 @@
 
     try {
         Class.forName("com.mysql.cj.jdbc.Driver");
-        conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/pahana_billing", "root", "");
+        conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/pahana_edu", "root", "");
 
         // Get bill details
         ps = conn.prepareStatement("SELECT * FROM bills WHERE id = ?");
