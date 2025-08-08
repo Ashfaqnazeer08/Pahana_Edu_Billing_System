@@ -120,7 +120,7 @@
                 <li>
                     <a href="items.jsp"><i class="fas fa-box"></i> Items </a>
                 </li>
-                <li><a href="#"><i class="fas fa-file-invoice"></i> Billing</a></li>
+                <li><a href="billing.jsp"><i class="fas fa-file-invoice"></i> Billing</a></li>
                 <li><a href="#"><i class="fas fa-clipboard"></i> Report</a></li>
                 <li><a href="#" class="logout-btn" onclick="showLogoutModal()"><i class="fas fa-sign-out-alt"></i> Logout</a></li>
             </ul>
