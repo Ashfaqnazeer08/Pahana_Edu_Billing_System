@@ -190,7 +190,7 @@
                         <td><%= i.get("quantity")%></td>
                         <td>
                             <a href="#" class="edit-btn" onclick="toggleEdit('<%= i.get("id")%>')"><i class="fas fa-edit"></i></a>
-                            <a href="DeleteItemServlet?id=<%= i.get("id")%>" class="delete-btn" onclick="return confirm('Are you sure?')"><i class="fas fa-trash"></i></a>
+                            <a href="DeleteItemServlet?id=<%= i.get("id")%>" class="delete-btn" onclick="return confirm('Are you sure you want to delete the item?')"><i class="fas fa-trash"></i></a>
                         </td>
                     </tr>
                     <tr id="editRow-<%= i.get("id")%>" class="edit-row">
