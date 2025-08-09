@@ -122,6 +122,7 @@
                 </li>
                 <li><a href="billing.jsp"><i class="fas fa-file-invoice"></i> Billing</a></li>
                 <li><a href="reports.jsp"><i class="fas fa-clipboard"></i> Report</a></li>
+                <li><a href="help.jsp"><i class="fas fa-chart-bar"></i> Help</a></li>
                 <li><a href="#" class="logout-btn" onclick="showLogoutModal()"><i class="fas fa-sign-out-alt"></i> Logout</a></li>
             </ul>
         </div>

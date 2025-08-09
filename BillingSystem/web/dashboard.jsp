@@ -24,15 +24,15 @@
             <div class="cards">
                 <div class="card">
                     <h2 id="billCount">0</h2>
-                    <p>Total Bills</p>
+                    <p style="color:white;">Total Bills</p>
                 </div>
                 <div class="card">
                     <h2 id="customerCount">0</h2>
-                    <p>Total Customers</p>
+                    <p style="color:white;">Total Customers</p>
                 </div>
                 <div class="card">
                     <h2 id="itemCount">0</h2>
-                    <p>Total Items</p>
+                    <p style="color:white;">Total Items</p>
                 </div>
             </div>
 
