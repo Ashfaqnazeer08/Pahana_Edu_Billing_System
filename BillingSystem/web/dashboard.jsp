@@ -47,6 +47,19 @@
             </div>
         </div>
 
-        <script src="js/script.js"></script>
+        
+        <script>
+            $(document).ready(function () {
+                fetch('DashboardCountsServlet')
+                        .then(res => res.json())
+                        .then(data => {
+                            $("#billCount").text(data.bills);
+                            $("#customerCount").text(data.customers);
+                            $("#itemCount").text(data.items);
+                        })
+                        .catch(err => console.error("Error loading dashboard counts:", err));
+            });
+        </script>
+
     </body>
 </html>

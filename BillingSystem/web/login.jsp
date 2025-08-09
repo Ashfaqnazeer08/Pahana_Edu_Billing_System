@@ -119,7 +119,7 @@
 
 
             <h1>Welcome!!</h1>
-            <p>Login to access your personalized dashboard and manage your projects with ease.<br> Stay productive, organized, and connected.</p>
+            <p>Login to access your personalized dashboard and manage customers, items, billing, and reports with ease.<br> Stay organized, serve customers faster, and keep your business running smoothly.</p>
 
         </div>
 
